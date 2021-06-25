@@ -289,7 +289,7 @@ if __name__=='__main__':
         fieldset = bickleyjet_from_numpy(periodic_wrap=periodicFlag, write_out=field_fpath)
 
     if args.compute_mode is 'scipy':
-        Nparticle = 2**10
+        Nparticle = 2**7
 
     if MPI:
         mpi_comm = MPI.COMM_WORLD
