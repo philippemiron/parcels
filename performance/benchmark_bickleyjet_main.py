@@ -42,7 +42,8 @@ pset_mode = {
 ptype = {'scipy': ScipyParticle, 'jit': JITParticle}
 method = {'RK4': AdvectionRK4, 'EE': AdvectionEE, 'RK45': AdvectionRK45}
 global_t_0 = 0
-Nparticle = int(math.pow(2,10)) # equals to Nparticle = 1024
+Nparticle = int(math.pow(2,7)) # equals to Nparticle = 128
+#Nparticle = int(math.pow(2,10)) # equals to Nparticle = 1024
 #Nparticle = int(math.pow(2,11)) # equals to Nparticle = 2048
 #Nparticle = int(math.pow(2,12)) # equals to Nparticle = 4096
 #Nparticle = int(math.pow(2,13)) # equals to Nparticle = 8192
@@ -281,7 +282,7 @@ if __name__=='__main__':
         fieldset = bickleyjet_from_numpy(periodic_wrap=periodicFlag, write_out=field_fpath)
 
     if args.compute_mode is 'scipy':
-        Nparticle = 2**10
+        Nparticle = 2**7
 
     if MPI:
         mpi_comm = MPI.COMM_WORLD
