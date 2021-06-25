@@ -41,7 +41,8 @@ pset_mode = {
 ptype = {'scipy': ScipyParticle, 'jit': JITParticle}
 method = {'RK4': AdvectionRK4, 'EE': AdvectionEE, 'RK45': AdvectionRK45}
 global_t_0 = 0
-Nparticle = int(math.pow(2,10)) # equals to Nparticle = 1024
+Nparticle = int(math.pow(2,7)) # equals to Nparticle = 1024
+#Nparticle = int(math.pow(2,10)) # equals to Nparticle = 1024
 #Nparticle = int(math.pow(2,11)) # equals to Nparticle = 2048
 #Nparticle = int(math.pow(2,12)) # equals to Nparticle = 4096
 #Nparticle = int(math.pow(2,13)) # equals to Nparticle = 8192
@@ -65,7 +66,7 @@ b = 10 * 1e3 # [b in km -> 10e3]  # is going to be overwritten
 # == == == to be command-defined here == == == #
 tsteps = 61 # in steps
 tstepsize = 12.0 # unitary
-tscale = 12.0*60.0*60.0 # in seconds
+tscale = 12.0*60.0*60.0 # in seconds - 1/2 day
 # ============================================ #
 
 
@@ -148,7 +149,7 @@ def bickleyjet_from_numpy(xdim=540, ydim=320, periodic_wrap=False, write_out=Fal
     dimensions = {'time': times, 'lon': lon, 'lat': lat}
     fieldset = None
     if periodic_wrap:
-        fieldset = FieldSet.from_data(data, dimensions, mesh='flat', transpose=False, time_periodic=delta(days=1))
+        fieldset = FieldSet.from_data(data, dimensions, mesh='flat', transpose=False, time_periodic=delta(days=366))
     else:
         fieldset = FieldSet.from_data(data, dimensions, mesh='flat', transpose=False, allow_time_extrapolation=True)
     if write_out:
